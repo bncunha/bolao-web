@@ -1,0 +1,14 @@
+.box {
+  height: 100%;
+}
+
+.is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.total-pontos {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'Montserrat';
+}

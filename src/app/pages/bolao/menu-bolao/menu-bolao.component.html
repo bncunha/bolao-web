@@ -1,0 +1,25 @@
+<div class="element is-loading" *ngIf="loding"></div>
+
+<ng-container *ngIf="!loding">
+  <div class="block" *ngIf="isAdm">
+    <small> Envie este link para convidar novos participantes: </small>
+    <input class="input is-small is-link" value="wwww.bolao.com/boloes/participar/7" readonly/>
+  </div>
+
+  <div class="block">
+    <small> Você possui: </small>
+    <p class="total-pontos"> {{ bolao?.participantes?.length ? bolao.participantes[0].totalPontos : 0 }} pontos </p>
+  </div>
+
+  <div class="columns is-mobile is-flex-wrap-wrap" *ngIf="!loding">
+    <div class="column is-half-mobile" *ngFor="let menu of menus">
+      <a class="box has-text-centered" [class.is-disabled]="!menu.link" [routerLink]="[menu.link]">
+        <span class="icon is-large has-text-success-dark">
+          <em class="fas {{ menu.icone }} fa-2x"></em>
+        </span>
+        <p> <strong> {{ menu.texto }} </strong> </p>
+      </a>
+    </div>
+  </div>
+</ng-container>
+

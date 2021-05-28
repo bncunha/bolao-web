@@ -1,0 +1,18 @@
+<header class="hero header">
+  <div class="level is-mobile">
+    <!-- <div class="level-item" *ngIf="hasBack">
+      <button type="button" (click)="voltar()" class="button is-rounded">
+        <div class="icon">
+          <em class="fas fa-angle-left fa-1x"></em>
+        </div>
+      </button>
+    </div> -->
+    <div class="level-item">
+      Bem-vindo {{ nomeUsuario }}!
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

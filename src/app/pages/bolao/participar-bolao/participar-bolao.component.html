@@ -1,0 +1,15 @@
+<div class="level" *ngIf="!loading && !bolao">
+  <h1 class="level-item"> Bolão não encontrado! </h1>
+</div>
+
+<div class="element is-loading" *ngIf="loading"></div>
+
+<div class="content">
+  <h4> {{ bolao?.nome }} </h4>
+  <p>
+    <strong> Id: </strong> {{ bolao?.id }} <br/>
+    <strong> Início: </strong> {{ bolao?.dataInicio | date: 'dd/MM/yyyy '}} <br/>
+    <strong> Máximo participantes: </strong> {{ bolao?.maximoParticipantes }} <br/>
+  </p>
+  <button type="button" [isLoading]="loadingParticipar" class="button is-primary" (click)="participar()"> Participar </button>
+</div>

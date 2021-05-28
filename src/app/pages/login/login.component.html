@@ -1,0 +1,40 @@
+<div class="container is-max-desktop">
+  <h1 class="titulo"> Olá. <br/> Bem-vindo de volta!</h1>
+
+  <form #f="ngForm" (submit)="onSubmit(f)">
+    <div class="field">
+      <label class="label"> E-mail </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-user"></em>
+        </span>
+        <input class="input" name="username" [(ngModel)]="model.username" autocomplete="username" type="email" placeholder="email@email.com" required>
+        <app-error-display name="username"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label"> Senha </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-key"></em>
+        </span>
+        <input class="input" name="password" [(ngModel)]="model.password" autocomplete="current-password" type="password" placeholder="Senha secreta" required>
+        <app-error-display name="password"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button type="submit" [isLoading]="loading" class="button is-primary is-fullwidth"> Acessar </button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control link">
+        <a routerLink="/cadastro"> Criar uma conta </a>
+      </div>
+    </div>
+
+  </form>
+</div>

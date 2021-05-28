@@ -1,0 +1,18 @@
+.block.versus {
+  margin-bottom: .75rem
+}
+
+.column {
+  padding: 5px;
+}
+
+.nome-time {
+  font-size: 14px;
+  word-break: break-all;
+}
+
+@media(min-width: 769px) {
+  .block.versus {
+    margin: 0.55rem .75rem
+  }
+}

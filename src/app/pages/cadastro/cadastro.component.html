@@ -1,0 +1,91 @@
+<div class="container is-max-desktop">
+  <h1 class="titulo"> Cadastre-se </h1>
+
+  <form #f="ngForm" (submit)="onSubmit(f)" [mustMatch]="['senha', 'repeatPaswword']">
+    <div class="field">
+      <label class="label"> Nome </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-user"></em>
+        </span>
+        <input
+          class="input"
+          name="nome"
+          ngModel
+          type="text"
+          autocomplete="name"
+          placeholder="Seu nome"
+          required>
+        <app-error-display name="nome"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label"> E-mail </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-envelope"></em>
+        </span>
+        <input
+          class="input"
+          name="email"
+          ngModel
+          type="email"
+          autocomplete="email"
+          placeholder="email@email.com"
+          required
+          email>
+        <app-error-display name="email"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label"> Senha </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-key"></em>
+        </span>
+        <input
+          class="input"
+          name="senha"
+          ngModel
+          type="password"
+          minlength="5"
+          autocomplete="new-password"
+          placeholder="Senha secreta"
+          required>
+        <app-error-display name="senha"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label"> Repetir senha </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <em class="fas fa-key"></em>
+        </span>
+        <input class="input"
+          name="repeatPaswword"
+          ngModel
+          type="password"
+          minlength="5"
+          autocomplete="new-password"
+          placeholder="Senha secreta"
+          required>
+        <app-error-display name="repeatPaswword"></app-error-display>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button type="submit" class="button is-primary is-fullwidth" [isLoading]="loading"> Cadastrar </button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button type="button" routerLink="/login" class="button is-primary is-outlined is-fullwidth"> Cancelar </button>
+      </div>
+    </div>
+  </form>
+</div>

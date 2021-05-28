@@ -1,0 +1,33 @@
+<div class="block">
+  <h1> Novo bolão </h1>
+</div>
+
+<form #f="ngForm" (submit)="onSubmit(f)">
+  <div class="field">
+    <label class="label"> Nome do bolão </label>
+    <input type="text"
+      ngModel
+      class="input"
+      name="nome"
+      required>
+    <app-error-display name="nome"></app-error-display>
+  </div>
+  <div class="field">
+    <label class="label"> Nº. máximo de participantes </label>
+    <input type="number"
+      ngModel
+      class="input"
+      name="maximoParticipantes"
+      required
+      min="5">
+    <app-error-display name="maximoParticipantes"></app-error-display>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <button type="submit" [isLoading]="loading" class="button is-primary"> Salvar </button>
+    </div>
+    <div class="control">
+      <button type="button" (click)="voltar()" class="button is-primary is-outlined"> Cancelar </button>
+    </div>
+  </div>
+</form>

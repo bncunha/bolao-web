@@ -1,0 +1,24 @@
+<!-- <div class="block">
+  <a class="button is-primary"> Participar de um bolão </a>
+</div> -->
+
+<!-- <div class="block">
+  <h1 class="titulo"> Bolões que você está participando: </h1>
+</div> -->
+
+<div *ngIf="loading" class="element is-loading"></div>
+
+<ng-container *ngIf="!loading">
+
+  <div class="block">
+    <a [routerLink]="['/boloes/novo']" class="button is-primary"> Criar bolão </a>
+  </div>
+
+  <p class="box" *ngIf="!boloes?.length">
+    Você não está participando de nenhum bolão.
+  </p>
+  <div class="block" *ngFor="let b of boloes">
+    <app-item-bolao  [bolao]="b" (bolaoClick)="onBolaoClick(b)"></app-item-bolao>
+  </div>
+</ng-container>
+
