@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://bolao-prod.herokuapp.com/'
+  api: 'https://bolao-staging.herokuapp.com/'
 };
