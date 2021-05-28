@@ -1,2 +1,6 @@
+[context.production]
+  publish = "dist/web"
+  command = "ng build"
+
 [context.staging]
   command = "ng build --configuration=homologation"
