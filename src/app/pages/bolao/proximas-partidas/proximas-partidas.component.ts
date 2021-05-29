@@ -58,12 +58,14 @@ export class ProximasPartidasComponent implements OnInit {
       resultadoVisitante: p.resultadoVisitante
     }) as CriarPalpiteDto);
 
-    this.palpitesService.realizarPalpites(palpites).subscribe(r => {
-      this.toastService.sucesso('Palpites realizados. Boa sorte! 😉')
-      this.buscarPartidasAtivas();
-    }, err => {
-      throw err;
-    })
+    if (palpites.length) {
+      this.palpitesService.realizarPalpites(palpites).subscribe(r => {
+        this.toastService.sucesso('Palpites realizados. Boa sorte! 😉')
+        this.buscarPartidasAtivas();
+      }, err => {
+        throw err;
+      })
+    }
   }
 
 
