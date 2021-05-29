@@ -62,8 +62,7 @@ export class MenuBolaoComponent implements OnInit {
   }
 
   get linkbolao() {
-    console.log(this.bolao);
-    return this.bolao && (document.location.protocol + document.location.host + '/boloes/participar/' + this.bolao.id);
+    return this.bolao && (document.location.protocol + '//' + document.location.host + '/boloes/participar/' + this.bolao.id);
   }
 
 
