@@ -3,12 +3,12 @@
 <ng-container *ngIf="!loding">
   <div class="block" *ngIf="isAdm">
     <small> Envie este link para convidar novos participantes: </small>
-    <input class="input is-small is-link" value="wwww.bolao.com/boloes/participar/7" readonly/>
+    <input class="input is-small is-link" [value]="linkbolao" readonly/>
   </div>
 
   <div class="block">
     <small> Você possui: </small>
-    <p class="total-pontos"> {{ bolao?.participantes?.length ? bolao.participantes[0].totalPontos : 0 }} pontos </p>
+    <p class="total-pontos"> {{ bolao ? bolao.participantes[0].totalPontos : 0 }} pontos </p>
   </div>
 
   <div class="columns is-mobile is-flex-wrap-wrap" *ngIf="!loding">

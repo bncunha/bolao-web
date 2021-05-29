@@ -13,7 +13,7 @@ import { BolaoResponse } from 'src/app/services/responses/Bolao.response';
 })
 export class MenuBolaoComponent implements OnInit {
   loding = false;
-  bolao!: BolaoResponse;
+  bolao?: BolaoResponse;
   isAdm = false;
 
   menus: any[] = [{
@@ -39,10 +39,7 @@ export class MenuBolaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.bolao = this.dataTransfer.get();
-    if (!this.bolao) {
-      this.verificarParticipacaoBolao();
-    }
+    this.verificarParticipacaoBolao();
   }
 
   verificarParticipacaoBolao() {
@@ -50,9 +47,9 @@ export class MenuBolaoComponent implements OnInit {
     this.bolaoService.getParticipando().subscribe(r => {
       this.loding = false;
       const id = this.route.snapshot.params.id;
-      this.bolao = r[0];
-      this.isAdm = r[0] && r[0].participantes[0].isAdministrador
-      if (id && r.find(bolao => bolao.id == id) !== undefined) {
+      this.bolao = r.find(bolao => bolao.id == id);
+      if (this.bolao) {
+        this.isAdm = this.bolao?.participantes[0].isAdministrador
         return;
       }
       this.toastService.erro('Você não está participando deste bolão!')
@@ -63,5 +60,11 @@ export class MenuBolaoComponent implements OnInit {
       throw err;
     })
   }
+
+  get linkbolao() {
+    console.log(this.bolao);
+    return this.bolao && (document.location.protocol + document.location.host + '/boloes/participar/' + this.bolao.id);
+  }
+
 
 }
