@@ -9,26 +9,7 @@
     <button type="submit" class="button is-primary"> Salvar palpites </button>
   </div>
 
-  <div class="box py-3" *ngFor="let partida of partidas">
-    <div class="columns is-mobile is-multiline mb-0">
-      <div class="column is-full has-text-centered">
-        <small> Rodada {{ partida.rodada }} - {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
-      </div>
-      <div class="column is-flex is-align-items-center">
-        <span class="nome-time"> {{ partida?.mandante?.nome }} </span>
-      </div>
-      <div class="column is-6 has-text-centered">
-        <div class="field is-grouped is-horizontal">
-          <input [(ngModel)]="partida.palpites[0].resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-          <div class="mx-2 is-expanded">
-            <div class="versus has-text-weight-bold"> X </div>
-          </div>
-          <input [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        </div>
-      </div>
-      <div class="column is-flex is-align-items-center is-justify-content-flex-end">
-        <span class="nome-time"> {{ partida?.visitante?.nome }} </span>
-      </div>
-    </div>
+  <div class="block" *ngFor="let partida of partidas">
+    <app-partida-box [partida]="partida"></app-partida-box>
   </div>
 </form>

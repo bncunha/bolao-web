@@ -8,6 +8,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MenuBolaoComponent } from './menu-bolao/menu-bolao.component';
 import { ProximasPartidasComponent } from './proximas-partidas/proximas-partidas.component';
 import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
+import { PartidaBoxComponent } from './partida-box/partida-box.component';
+import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
 
 
 
@@ -18,12 +20,14 @@ import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
     ParticiparBolaoComponent,
     MenuBolaoComponent,
     ProximasPartidasComponent,
-    CriarBolaoComponent
+    CriarBolaoComponent,
+    PartidaBoxComponent,
+    InformarResultadosComponent
   ],
   imports: [
     CommonModule,
     BolaoRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     BoloesParticipandoComponent

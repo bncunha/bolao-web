@@ -28,6 +28,11 @@ export class MenuBolaoComponent implements OnInit {
     icone: 'fa-history',
     link: '',
     texto: 'Histórico de Partidas'
+  }, {
+    icone: 'fa-trophy',
+    link: 'informar-resultados',
+    texto: 'Informar resultados',
+    onlyAdm: true
   }]
 
   constructor(

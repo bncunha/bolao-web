@@ -12,14 +12,16 @@
   </div>
 
   <div class="columns is-mobile is-flex-wrap-wrap" *ngIf="!loding">
-    <div class="column is-half-mobile" *ngFor="let menu of menus">
-      <a class="box has-text-centered" [class.is-disabled]="!menu.link" [routerLink]="[menu.link]">
-        <span class="icon is-large has-text-success-dark">
-          <em class="fas {{ menu.icone }} fa-2x"></em>
-        </span>
-        <p> <strong> {{ menu.texto }} </strong> </p>
-      </a>
-    </div>
+    <ng-container *ngFor="let menu of menus">
+      <div class="column is-half-mobile" *ngIf="!menu.onlyAdm || (menu.onlyAdm && isAdm)">
+        <a class="box has-text-centered" [class.is-disabled]="!menu.link" [routerLink]="[menu.link]">
+          <span class="icon is-large has-text-success-dark">
+            <em class="fas {{ menu.icone }} fa-2x"></em>
+          </span>
+          <p> <strong> {{ menu.texto }} </strong> </p>
+        </a>
+      </div>
+    </ng-container>
   </div>
 </ng-container>
 

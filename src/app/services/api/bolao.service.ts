@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CriarBolaoDto } from '../requests/CriarBolaoDto';
 import { BolaoResponse } from '../responses/Bolao.response';
+import { PartidaResponse } from '../responses/Partida.response';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class BolaoService {
 
   getPartidasAtivas(idBolao: number) {
     return this.http.get('boloes/partidas-ativas/' + idBolao);
+  }
+
+  getHistoricoPartidas(idBolao: number): Observable<PartidaResponse[]> {
+    return this.http.get<PartidaResponse[]>('boloes/historico-partidas/' + idBolao);
   }
 
   criarBolao(criarBolaoDto: CriarBolaoDto) {
