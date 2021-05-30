@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { PartidasService } from 'src/app/services/api/partidas.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { ToastService } from 'src/app/services/core/toast.service';
 import { EnviarResultadoDto } from 'src/app/services/requests/EnviarResultadoDto';
 import { PartidaResponse } from 'src/app/services/responses/Partida.response';
 
@@ -19,7 +20,7 @@ export class InformarResultadosComponent implements OnInit {
     private route: ActivatedRoute,
     private bolaoService: BolaoService,
     private partidasService: PartidasService,
-    private routesService: RouterService
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -39,8 +40,8 @@ export class InformarResultadosComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    const partidas = this.partidas.filter(p => p.resultadoMandante != undefined && p.resultadoVisitante != undefined )
+  onSubmit(partidasHabilitadas: any[]) {
+    const partidas = partidasHabilitadas.filter(p => p.resultadoMandante != undefined && p.resultadoVisitante != undefined )
     .map(p => ({
       idPartida: p.id,
       resultadoMandante: p.resultadoMandante,
@@ -48,9 +49,14 @@ export class InformarResultadosComponent implements OnInit {
     }) as EnviarResultadoDto);
 
     if (partidas.length) {
+      this.loading = true;
       this.partidasService.atualizarResultadoPartidas(partidas).subscribe(r => {
-        console.log(r)
+        this.loading = false;
+        const rodada = r?.[0]?.rodada;
+        this.buscarHistoricoPartidas();
+        this.toastService.sucesso(rodada ? `Rodada ${rodada} salvo!` : 'Salvo com sucesso!');
       }, err => {
+        this.loading = false;
         throw err;
       })
     }

@@ -12,6 +12,6 @@ export class PalpiteService {
   ) { }
 
   realizarPalpites(criarPalpiteDto: CriarPalpiteDto[]) {
-    return this.http.post('palpites', criarPalpiteDto);
+    return this.http.post<any[]>('palpites', criarPalpiteDto);
   }
 }

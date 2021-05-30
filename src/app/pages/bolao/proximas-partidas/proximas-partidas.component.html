@@ -4,6 +4,6 @@
   Ainad não há partidas ativas. Por favor, volte mais tarde!
 </div>
 
-<form>
+<form *ngIf="partidas?.length">
   <app-lista-partidas [partidas]="partidas" (salvarPalpites)="salvarPalpites($event)"></app-lista-partidas>
 </form>

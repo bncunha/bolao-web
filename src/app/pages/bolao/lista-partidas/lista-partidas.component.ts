@@ -9,6 +9,7 @@ import { DateUtils } from 'src/app/utils/date.util';
 export class ListaPartidasComponent implements OnChanges {
   @Output() salvarPalpites = new EventEmitter();
   @Input() partidas?: any[];
+  @Input() showResultado: boolean = false;
 
   agrupadosPorRodada: {rodada: number, partidas: any[]}[] = [];
   rodadaSelecionada!: number;
@@ -43,6 +44,9 @@ export class ListaPartidasComponent implements OnChanges {
   }
 
   get partidasHabilitadas() {
+    if (this.showResultado) {
+      return this.partidasSelecionadas?.length ? this.partidasSelecionadas.filter(p => p.resultadoMandante != null && p.resultadoVisitante != null): [];
+    }
     return this.partidasSelecionadas?.length ? this.partidasSelecionadas.filter(p => !this.isDisabled(p)): [];
   }
 

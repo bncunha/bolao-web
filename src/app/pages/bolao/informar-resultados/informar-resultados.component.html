@@ -1,20 +1,10 @@
 <div class="element is-loading" *ngIf="loading"></div>
 
-<div class="box" *ngIf="!partidas?.length">
+<div class="box" *ngIf="!loading && !partidas?.length">
   Nenhum partida encontrada!
 </div>
 
-<form *ngIf="!loading && partidas?.length" (submit)=onSubmit()>
-  <div class="block">
-    <button class="button is-primary" type="submit"> Salvar resultados </button>
-  </div>
-
-  <div class="block">
-    <h1> Resultados: </h1>
-  </div>
-
-  <div class="block" *ngFor="let p of partidas">
-    <app-partida-box [partida]="p" [showResultado]="true"></app-partida-box>
-  </div>
+<form *ngIf="!loading && partidas?.length">
+  <app-lista-partidas [partidas]="partidas" (salvarPalpites)="onSubmit($event)" [showResultado]="true"></app-lista-partidas>
 </form>
 

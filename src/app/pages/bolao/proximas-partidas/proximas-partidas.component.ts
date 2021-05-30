@@ -63,7 +63,8 @@ export class ProximasPartidasComponent implements OnInit {
 
     if (palpites.length) {
       this.palpitesService.realizarPalpites(palpites).subscribe(r => {
-        this.toastService.sucesso('Palpites realizados. Boa sorte! 😉')
+        const rodada = r?.[0]?.partida?.rodada;
+        this.toastService.sucesso(rodada ? `Rodada ${rodada} salvos! Boa sorte! 😉` : 'Apostas realizadas. Boa sorte! 😉')
         this.buscarPartidasAtivas();
       }, err => {
         throw err;

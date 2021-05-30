@@ -35,6 +35,7 @@ export class CustomErrorHandler implements ErrorHandler {
   }
 
   handleClientError(message: string) {
+    console.log(message);
     this.toast.error(message);
   }
 }

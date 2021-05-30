@@ -5,4 +5,5 @@ export interface PartidaResponse {
   isFinalizado: boolean;
   resultadoMandante: number;
   resultadoVisitante: number;
+  rodada: number;
 }
