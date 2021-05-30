@@ -4,9 +4,9 @@
       <small> Rodada {{ partida.rodada }} - {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
     </div>
     <div class="column is-one-quarter has-text-right" *ngIf="partida.isFinalizado && !showResultado">
-      <p class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
+      <small class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
         {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
-      </p>
+      </small>
     </div>
   </div>
   <div class="columns is-mobile is-multiline mb-0">

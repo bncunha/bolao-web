@@ -1,14 +1,15 @@
 <header class="hero header">
-  <div class="level is-mobile">
-    <!-- <div class="level-item" *ngIf="hasBack">
-      <button type="button" (click)="voltar()" class="button is-rounded">
+  <div class="columns is-mobile">
+    <div class="column is-2" *ngIf="backUrl">
+      <button type="button" (click)="voltar()" class="button is-small">
         <div class="icon">
           <em class="fas fa-angle-left fa-1x"></em>
         </div>
       </button>
-    </div> -->
-    <div class="level-item">
-      Bem-vindo {{ nomeUsuario }}!
+    </div>
+    <div class="column has-text-weight-bold is-flex is-align-items-center">
+      <span *ngIf="!titulo"> Bem-vindo {{ nomeUsuario }}! </span>
+      <span *ngIf="titulo"> {{ titulo }} </span>
     </div>
   </div>
 </header>
