@@ -32,24 +32,27 @@ export class ProximasPartidasComponent implements OnInit {
     this.partidas = [];
     this.bolaoService.getPartidasAtivas(this.id).subscribe((r: any) => {
       this.loading = false;
-      this.partidas = r.map((item: any) => {
-        if (!item.palpites.length) {
-          item.palpites = [{
-            resultadoMandante: null,
-            resultadoVisitante: null
-          }]
-        }
-        return item;
-      }) as any;
-      console.log(r);
+      this.partidas = this.tratarPalpitesNulos(r);
     }, err => {
       this.loading = false;
       throw err;
     })
   }
 
-  salvarPalpites() {
-    const palpites = this.partidas.map(p => ({partida: p.id, resultadoMandante: p.palpites[0].resultadoMandante, resultadoVisitante: p.palpites[0].resultadoVisitante}))
+  tratarPalpitesNulos(r: any) {
+    return r.map((item: any) => {
+      if (!item.palpites.length) {
+        item.palpites = [{
+          resultadoMandante: null,
+          resultadoVisitante: null
+        }]
+      }
+      return item;
+    }) as any;
+  }
+
+  salvarPalpites(palpitesHabilitados: any[]) {
+    const palpites = palpitesHabilitados.map(p => ({partida: p.id, resultadoMandante: p.palpites[0].resultadoMandante, resultadoVisitante: p.palpites[0].resultadoVisitante}))
     .filter(p => p.resultadoMandante != undefined && p.resultadoVisitante != undefined )
     .map(p => ({
       idBolao: this.id,

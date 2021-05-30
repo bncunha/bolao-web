@@ -4,12 +4,6 @@
   Ainad não há partidas ativas. Por favor, volte mais tarde!
 </div>
 
-<form (submit)="salvarPalpites()">
-  <div class="block">
-    <button type="submit" class="button is-primary"> Salvar palpites </button>
-  </div>
-
-  <div class="block" *ngFor="let partida of partidas">
-    <app-partida-box [partida]="partida"></app-partida-box>
-  </div>
+<form>
+  <app-lista-partidas [partidas]="partidas" (salvarPalpites)="salvarPalpites($event)"></app-lista-partidas>
 </form>

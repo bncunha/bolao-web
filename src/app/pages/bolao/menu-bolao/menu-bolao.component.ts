@@ -19,7 +19,7 @@ export class MenuBolaoComponent implements OnInit {
   menus: any[] = [{
     icone: 'fa-futbol',
     link: 'proximas',
-    texto: 'Próximas Partidas'
+    texto: 'Apostas'
   }, {
     icone: 'fa-chart-line',
     link: '',

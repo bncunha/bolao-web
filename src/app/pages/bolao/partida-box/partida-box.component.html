@@ -1,20 +1,27 @@
-<div class="box py-3">
-  <div class="columns is-mobile is-multiline mb-0">
-    <div class="column is-full has-text-centered">
+<div class="box partida-wrapper">
+  <div class="columns is-mobile is-multiline">
+    <div class="column is-three-quarters">
       <small> Rodada {{ partida.rodada }} - {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
     </div>
+    <div class="column is-one-quarter has-text-right" *ngIf="partida.isFinalizado">
+      <p class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
+        {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
+      </p>
+    </div>
+  </div>
+  <div class="columns is-mobile is-multiline mb-0">
     <div class="column is-flex is-align-items-center">
       <span class="nome-time"> {{ partida?.mandante?.nome }} </span>
     </div>
     <div class="column is-6 has-text-centered">
       <div class="field is-grouped is-horizontal">
-        <input *ngIf="!showResultado" [(ngModel)]="partida.palpites[0].resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        <input *ngIf="showResultado" [(ngModel)]="partida.resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        <input *ngIf="!showResultado" [disabled]="disabled"  [(ngModel)]="partida.palpites[0].resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
         <div class="mx-2 is-expanded">
           <div class="versus has-text-weight-bold"> X </div>
         </div>
-        <input *ngIf="!showResultado" [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        <input *ngIf="showResultado" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        <input *ngIf="!showResultado"  [disabled]="disabled" [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
       </div>
     </div>
     <div class="column is-flex is-align-items-center is-justify-content-flex-end">

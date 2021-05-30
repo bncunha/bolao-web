@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PartidaBoxComponent implements OnInit {
   @Input() partida: any;
   @Input() showResultado: boolean = false;
+  @Input() disabled: boolean = false;
 
   constructor() { }
 

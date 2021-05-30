@@ -1,0 +1,14 @@
+.partidas-container {
+  max-height: 63vh;
+  overflow-y: scroll;
+  margin-top: 20px;
+
+  .partida-content {
+    margin-bottom: 5px;
+  }
+}
+
+.fixed-top {
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 15px;
+}

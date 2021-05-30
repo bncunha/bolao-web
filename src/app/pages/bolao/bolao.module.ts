@@ -10,6 +10,7 @@ import { ProximasPartidasComponent } from './proximas-partidas/proximas-partidas
 import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
 import { PartidaBoxComponent } from './partida-box/partida-box.component';
 import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
+import { ListaPartidasComponent } from './lista-partidas/lista-partidas.component';
 
 
 
@@ -22,7 +23,8 @@ import { InformarResultadosComponent } from './informar-resultados/informar-resu
     ProximasPartidasComponent,
     CriarBolaoComponent,
     PartidaBoxComponent,
-    InformarResultadosComponent
+    InformarResultadosComponent,
+    ListaPartidasComponent
   ],
   imports: [
     CommonModule,
