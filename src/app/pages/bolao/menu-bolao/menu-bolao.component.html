@@ -8,7 +8,7 @@
 
   <div class="block">
     <small> Você possui: </small>
-    <p class="total-pontos"> {{ bolao ? bolao.participantes[0].totalPontos : 0 }} pontos </p>
+    <p class="total-pontos"> {{ (bolao ? bolao.participantes[0].totalPontos : 0) | number }} pontos </p>
   </div>
 
   <div class="columns is-mobile is-flex-wrap-wrap" *ngIf="!loding">

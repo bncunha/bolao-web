@@ -11,6 +11,7 @@ import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
 import { PartidaBoxComponent } from './partida-box/partida-box.component';
 import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
 import { ListaPartidasComponent } from './lista-partidas/lista-partidas.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 
@@ -24,7 +25,8 @@ import { ListaPartidasComponent } from './lista-partidas/lista-partidas.componen
     CriarBolaoComponent,
     PartidaBoxComponent,
     InformarResultadosComponent,
-    ListaPartidasComponent
+    ListaPartidasComponent,
+    RankingComponent
   ],
   imports: [
     CommonModule,

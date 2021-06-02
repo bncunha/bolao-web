@@ -1,0 +1,25 @@
+<div class="element is-loading" *ngIf="loading"></div>
+
+<div *ngIf="!loading">
+  <table class="table is-fullwidth" aria-describedby="Ranking de usuários do bolão">
+    <thead>
+      <tr>
+        <th scope="col"> # </th>
+        <th scope="col"> Nome </th>
+        <th scope="col"> Pontuação </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!ranking?.length">
+        <td colspan="3"> Nada encontrado! 😥 </td>
+      </tr>
+      <tr *ngFor="let rank of ranking; let i = index" [ngClass]="{'ouro': i == 0, 'prata': i == 1, 'bronze': i == 2}">
+        <td>
+          {{ i+1 }}º
+        </td>
+        <td> {{ rank.usuario.nome }} </td>
+        <td> {{ rank.pontuacao | number}} pts </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

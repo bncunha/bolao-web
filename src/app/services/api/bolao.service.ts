@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CriarBolaoDto } from '../requests/CriarBolaoDto';
 import { BolaoResponse } from '../responses/Bolao.response';
 import { PartidaResponse } from '../responses/Partida.response';
+import { RankingResponse } from '../responses/Ranking.response';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class BolaoService {
 
   getHistoricoPartidas(idBolao: number): Observable<PartidaResponse[]> {
     return this.http.get<PartidaResponse[]>('boloes/historico-partidas/' + idBolao);
+  }
+
+  getRanking(idBolao: number): Observable<RankingResponse[]> {
+    return this.http.get<RankingResponse[]>('boloes/' + idBolao + '/ranking');
   }
 
   criarBolao(criarBolaoDto: CriarBolaoDto) {

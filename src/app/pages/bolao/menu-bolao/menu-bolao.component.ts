@@ -22,12 +22,8 @@ export class MenuBolaoComponent implements OnInit {
     texto: 'Apostas'
   }, {
     icone: 'fa-chart-line',
-    link: '',
+    link: 'ranking',
     texto: 'Ranking'
-  }, {
-    icone: 'fa-history',
-    link: '',
-    texto: 'Histórico de Partidas'
   }, {
     icone: 'fa-trophy',
     link: 'informar-resultados',

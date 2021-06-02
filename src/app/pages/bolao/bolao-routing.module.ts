@@ -5,6 +5,7 @@ import { InformarResultadosComponent } from './informar-resultados/informar-resu
 import { MenuBolaoComponent } from './menu-bolao/menu-bolao.component';
 import { ParticiparBolaoComponent } from './participar-bolao/participar-bolao.component';
 import { ProximasPartidasComponent } from './proximas-partidas/proximas-partidas.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 export interface BolaoData {
   titulo: string;
@@ -17,6 +18,7 @@ const rotes: Routes = [
   {path: ':id', component: MenuBolaoComponent, data: {backUrl: '/inicio'} as BolaoData},
   {path: ':id/proximas', component: ProximasPartidasComponent, data: {backUrl: '{menuBolao}', titulo: 'Apostas'} as BolaoData},
   {path: ':id/informar-resultados', component: InformarResultadosComponent, data: {backUrl: '{menuBolao}', titulo: 'Informar Resultados'} as BolaoData},
+  {path: ':id/ranking', component: RankingComponent, data: {backUrl: '{menuBolao}', titulo: 'Ranking'} as BolaoData},
 ]
 
 
