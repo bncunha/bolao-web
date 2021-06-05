@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CriarBolaoDto } from '../requests/CriarBolaoDto';
+import { SalvarPalpiteBonusDto } from '../requests/SalvarPalpiteBonusDto';
 import { BolaoResponse } from '../responses/Bolao.response';
+import { PalpiteBonusResponse } from '../responses/PalpiteBonus.response';
 import { PartidaResponse } from '../responses/Partida.response';
 import { RankingResponse } from '../responses/Ranking.response';
 
@@ -39,5 +41,13 @@ export class BolaoService {
 
   criarBolao(criarBolaoDto: CriarBolaoDto) {
     return this.http.post('boloes', criarBolaoDto);
+  }
+
+  salvarPalpiteBonus(idBolao: number, salvarPalpiteBonus: SalvarPalpiteBonusDto) {
+    return this.http.post('boloes/palpite-bonus/' + idBolao, salvarPalpiteBonus);
+  }
+
+  getPalpiteBonus(idBolao: number): Observable<PalpiteBonusResponse> {
+    return this.http.get<PalpiteBonusResponse>('boloes/palpite-bonus/' + idBolao);
   }
 }

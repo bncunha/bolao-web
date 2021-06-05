@@ -1,0 +1,49 @@
+<div class="content">
+  <p>
+    Com o palpite bônus você possui mais chances de ganhar!
+  </p>
+  <p>
+    Indique quem será o Campeão e o Vice-campeão do campeonato, caso acerte
+    você possui a chance de ganhar até 80 pontos no final do bolão!
+  </p>
+  <p>
+    <strong>
+      Campeão: +50 pts <br/>
+      Vice-campeão: +30 pts
+    </strong>
+  </p>
+</div>
+
+<div class="element is-loading" *ngIf="loading"></div>
+
+<div class="box" *ngIf="!loading && !times?.length">
+  Erro ao buscar os times!
+</div>
+
+<form #f="ngForm" (submit)="onSubmit(f)" *ngIf="!loading && times?.length">
+  <div class="field">
+    <label class="label"> Campeão </label>
+    <div class="control">
+      <select [(ngModel)]="model.idCampeao" name="idCampeao" class="input" type="text" [disabled]="!disponivel" required>
+        <option [value]="null" disabled> Selecione </option>
+        <option [value]="time.id" *ngFor="let time of times"> {{ time.nome }} </option>
+      </select>
+    </div>
+    <app-error-display name="idCampeao"></app-error-display>
+  </div>
+  <div class="field">
+    <label class="label"> Vice-campeão </label>
+    <div class="control">
+      <select [(ngModel)]="model.idViceCampeao" name="idViceCampeao" class="input" type="text" [disabled]="!disponivel" required>
+        <option [value]="null" disabled> Selecione </option>
+        <option [value]="time.id" *ngFor="let time of times"> {{ time.nome }} </option>
+      </select>
+    </div>
+    <app-error-display name="idViceCampeao"></app-error-display>
+  </div>
+  <div class="field">
+    <div class="control">
+      <button type="submit" [isLoading]="loadingSalvar" class="button is-primary"> Salvar </button>
+    </div>
+  </div>
+</form>

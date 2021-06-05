@@ -10,7 +10,7 @@ import { LoginDto } from './dto/LoginDto';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   model = new LoginDto();
   loading = false;
 
@@ -19,6 +19,10 @@ export class LoginComponent {
     private router: RouterService,
     private toastService: ToastService
   ) { }
+
+  ngOnInit() {
+    this.authService.logout();
+  }
 
   onSubmit(f: NgForm) {
     if (f.valid) {

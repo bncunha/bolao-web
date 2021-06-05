@@ -12,6 +12,7 @@ import { PartidaBoxComponent } from './partida-box/partida-box.component';
 import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
 import { ListaPartidasComponent } from './lista-partidas/lista-partidas.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { PalpiteBonusComponent } from './palpite-bonus/palpite-bonus.component';
 
 
 
@@ -26,7 +27,8 @@ import { RankingComponent } from './ranking/ranking.component';
     PartidaBoxComponent,
     InformarResultadosComponent,
     ListaPartidasComponent,
-    RankingComponent
+    RankingComponent,
+    PalpiteBonusComponent
   ],
   imports: [
     CommonModule,

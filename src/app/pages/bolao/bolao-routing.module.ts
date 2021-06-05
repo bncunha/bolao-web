@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
 import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
 import { MenuBolaoComponent } from './menu-bolao/menu-bolao.component';
+import { PalpiteBonusComponent } from './palpite-bonus/palpite-bonus.component';
 import { ParticiparBolaoComponent } from './participar-bolao/participar-bolao.component';
 import { ProximasPartidasComponent } from './proximas-partidas/proximas-partidas.component';
 import { RankingComponent } from './ranking/ranking.component';
@@ -19,6 +20,7 @@ const rotes: Routes = [
   {path: ':id/proximas', component: ProximasPartidasComponent, data: {backUrl: '{menuBolao}', titulo: 'Apostas'} as BolaoData},
   {path: ':id/informar-resultados', component: InformarResultadosComponent, data: {backUrl: '{menuBolao}', titulo: 'Informar Resultados'} as BolaoData},
   {path: ':id/ranking', component: RankingComponent, data: {backUrl: '{menuBolao}', titulo: 'Ranking'} as BolaoData},
+  {path: ':id/palpite-bonus', component: PalpiteBonusComponent, data: {backUrl: '{menuBolao}', titulo: 'Palpite Bônus'} as BolaoData},
 ]
 
 
