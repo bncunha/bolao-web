@@ -41,7 +41,7 @@
     </div>
     <app-error-display name="idViceCampeao"></app-error-display>
   </div>
-  <div class="field">
+  <div class="field" *ngIf="disponivel">
     <div class="control">
       <button type="submit" [isLoading]="loadingSalvar" class="button is-primary"> Salvar </button>
     </div>
