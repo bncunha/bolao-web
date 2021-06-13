@@ -1,0 +1,60 @@
+.coluna-vs {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 28px;
+  color: #969696;
+  user-select: none;
+}
+
+.nome-time {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hora-partida {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.resultado {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.image {
+  margin: auto;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    margin: auto;
+  }
+}
+
+.partida-rolando {
+  text-align: center;
+  font-weight: bold;
+  animation: piscar 3s infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes piscar {
+  0% {
+    color: #347c17;
+  }
+
+  50% {
+    color: #ffce08
+  }
+
+  100% {
+    color: #347c17;
+  }
+}

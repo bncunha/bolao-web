@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DataRoutesService } from 'src/app/services/core/data-routes.service';
 import { RouterService } from 'src/app/services/core/router.service';
@@ -21,7 +21,8 @@ export class TopFooterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private dataRoute: DataRoutesService,
-    private routesService: RouterService
+    private routesService: RouterService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +40,8 @@ export class TopFooterComponent implements OnInit {
   voltar() {
     if (this.backUrl == '{menuBolao}' && this.id) {
       this.routesService.toMenuBolao(this.id as any);
+    } else if (this.backUrl == '{back}') {
+      this.location.back();
     } else if (this.backUrl) {
       this.router.navigate([this.backUrl]);
     } else {

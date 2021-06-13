@@ -1,10 +1,18 @@
 <div class="box partida-wrapper">
   <div class="columns is-mobile is-multiline">
-    <div class="column is-half mb-2">
+
+    <div class="column mb-2">
       <small> {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
     </div>
-    <div class="column is-half mb-2 has-text-right">
-      <a class="ver-mais-link is-ghost">
+
+    <div class="column is-one-fifth has-text-centered" *ngIf="partida.isFinalizado && !showResultado">
+      <small class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
+        {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
+      </small>
+    </div>
+
+    <div class="column mb-2 has-text-right">
+      <a class="ver-mais-link is-ghost" [routerLink]="['../partida', partida.id]">
         <div class="icon-text is-justify-content-flex-end">
           <span class="icon has-text-info">
             <em class="fas fa-info-circle"></em>
@@ -12,11 +20,6 @@
           <span> Ver mais </span>
         </div>
       </a>
-    </div>
-    <div class="column is-one-quarter has-text-right" *ngIf="partida.isFinalizado && !showResultado">
-      <small class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
-        {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
-      </small>
     </div>
   </div>
   <div class="columns is-mobile is-multiline mb-0">

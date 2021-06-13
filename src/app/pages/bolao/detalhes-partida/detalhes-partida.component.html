@@ -1,0 +1,54 @@
+<div *ngIf="loading" class="element is-loading"></div>
+
+<div *ngIf="!loading">
+  <p class="hora-partida">
+    Rodada {{ detalhes?.partida?.rodada }} <br/>
+    {{ detalhes?.partida?.data | date: 'dd/MM/yyyy HH:mm'}}
+  </p>
+  <p class="partida-rolando" *ngIf="!partidaAtiva && !detalhes?.partida.isFinalizado">
+    ⚽ A partida está rolando.
+  </p>
+  <div class="columns is-mobile">
+    <div class="column has-text-centered">
+      <span class="resultado"> {{ detalhes?.partida?.resultadoMandante }} </span>
+      <figure class="image is-inline-block is-96x96">
+        <img [alt]="detalhes?.partida?.mandante?.nome" [src]="'/assets/brasao/' + detalhes?.partida?.mandante?.logomarca">
+      </figure>
+      <span class="nome-time"> {{ detalhes?.partida?.mandante?.nome }} </span>
+    </div>
+    <div class="column is-one-fifth coluna-vs">
+      x
+    </div>
+    <div class="column has-text-centered">
+      <span class="resultado"> {{ detalhes?.partida?.resultadoVisitante }} </span>
+      <figure class="image is-96x96">
+        <img [alt]="detalhes?.partida?.visitante?.nome" [src]="'/assets/brasao/' + detalhes?.partida?.visitante?.logomarca">
+      </figure>
+      <span class="nome-time"> {{ detalhes?.partida?.visitante?.nome }} </span>
+    </div>
+  </div>
+
+  <div class="box" *ngIf="partidaAtiva">
+    Esta partida ainda está habilitada para apostas.
+  </div>
+
+  <div class="box" *ngIf="!partidaAtiva">
+    <table class="table is-fullwidth" aria-describedby="Tabela de palpites feitos para esta partida">
+      <thead>
+        <th scope="col"></th>
+        <th scope="col" class="has-text-centered" aria-describedby="Participante"> Participante </th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <tr *ngIf="!detalhes?.palpites?.length">
+          <td colspan="3" class="has-text-centered"> Nenhuma aposta feita. </td>
+        </tr>
+        <tr *ngFor="let palpite of detalhes?.palpites">
+          <td class="has-text-centered"> {{ palpite?.resultadoMandante }} </td>
+          <td class="has-text-centered"> {{ palpite?.participacao?.usuario?.nome }} </td>
+          <td class="has-text-centered"> {{ palpite?.resultadoVisitante }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

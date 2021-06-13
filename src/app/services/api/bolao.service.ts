@@ -50,4 +50,8 @@ export class BolaoService {
   getPalpiteBonus(idBolao: number): Observable<PalpiteBonusResponse> {
     return this.http.get<PalpiteBonusResponse>('boloes/palpite-bonus/' + idBolao);
   }
+
+  getDetalhesPartida(idBolao: number, idPartida: number) {
+    return this.http.get<any>(`boloes/detalhes-partida/${idBolao}/${idPartida}`);
+  }
 }

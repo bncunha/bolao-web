@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { PartidasService } from 'src/app/services/api/partidas.service';
 import { PartidaResponse } from 'src/app/services/responses/Partida.response';
 import { DateUtils } from 'src/app/utils/date.util';
 
@@ -14,6 +15,10 @@ export class ListaPartidasComponent implements OnChanges {
 
   agrupadosPorRodada: {rodada: number, partidas: any[]}[] = [];
   rodadaSelecionada!: number;
+
+  constructor(
+    private partidaService: PartidasService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.partidas) {
@@ -98,7 +103,7 @@ export class ListaPartidasComponent implements OnChanges {
   }
 
   isDisabled(partida: any) {
-    return DateUtils.compare(new Date(), DateUtils.subtract(new Date(partida.data), {minutes: 30})) >= 0;
+    return this.partidaService.isPartidaDisabled(partida);
   }
 
   detalhesPartida(partida: PartidaResponse) {
