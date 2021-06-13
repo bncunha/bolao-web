@@ -10,7 +10,10 @@
     </div>
   </div>
   <div class="columns is-mobile is-multiline mb-0">
-    <div class="column is-flex is-align-items-center">
+    <div class="column is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-center">
+      <figure class="image is-32x32">
+        <img [src]="'/assets/brasao/' + partida?.mandante?.logomarca" [alt]="partida?.mandante?.nome"/>
+      </figure>
       <span class="nome-time"> {{ partida?.mandante?.nome }} </span>
     </div>
     <div class="column is-6 has-text-centered">
@@ -24,7 +27,10 @@
         <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
       </div>
     </div>
-    <div class="column is-flex is-align-items-center is-justify-content-flex-end">
+    <div class="column is-flex is-align-items-center is-justify-content-center is-flex-wrap-wrap">
+      <figure class="image is-32x32">
+        <img [src]="'/assets/brasao/' + partida?.visitante?.logomarca" [alt]="partida?.visitante?.nome"/>
+      </figure>
       <span class="nome-time"> {{ partida?.visitante?.nome }} </span>
     </div>
   </div>

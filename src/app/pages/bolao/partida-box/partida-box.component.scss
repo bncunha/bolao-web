@@ -27,8 +27,15 @@ small.is-warning {
 }
 
 .nome-time {
-  font-size: 14px;
+  font-size: 12px;
   word-break: break-all;
+  text-align: center;
+  width: 100%;
+}
+.image img {
+  width: auto;
+  max-height: 100%;
+  margin: auto;
 }
 
 @media(min-width: 769px) {
