@@ -35,6 +35,6 @@
 
 <div class="partidas-container">
   <div class="partida-content" *ngFor="let partida of partidasSelecionadas">
-    <app-partida-box [partida]="partida" [disabled]="!showResultado && isDisabled(partida)" [showResultado]="showResultado"></app-partida-box>
+    <app-partida-box (click)="detalhesPartida(partida)" [partida]="partida" [disabled]="!showResultado && isDisabled(partida)" [showResultado]="showResultado"></app-partida-box>
   </div>
 </div>

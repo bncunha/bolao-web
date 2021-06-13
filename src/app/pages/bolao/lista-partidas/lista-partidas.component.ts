@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { PartidaResponse } from 'src/app/services/responses/Partida.response';
 import { DateUtils } from 'src/app/utils/date.util';
 
 @Component({
@@ -100,4 +101,7 @@ export class ListaPartidasComponent implements OnChanges {
     return DateUtils.compare(new Date(), DateUtils.subtract(new Date(partida.data), {minutes: 30})) >= 0;
   }
 
+  detalhesPartida(partida: PartidaResponse) {
+    console.log(partida);
+  }
 }
