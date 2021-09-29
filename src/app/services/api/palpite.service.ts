@@ -21,4 +21,8 @@ export class PalpiteService {
   isPalpiteBonusDisponivel(idBolao: number): Observable<boolean> {
     return this.http.get<boolean>('palpites/bonus/disponibilidade/' + idBolao);
   }
+
+  getPalpitesParticipantes(idBolao: number) {
+    return this.http.get<boolean>('palpites/' + idBolao);
+  }
 }

@@ -17,6 +17,7 @@ import { TimeResponse } from 'src/app/services/responses/TimeResponse';
 })
 export class PalpiteBonusComponent implements OnInit {
   times: TimeResponse[] = []
+  palpites: any;
   loading: boolean = false;
   loadingSalvar: boolean = false;
   disponivel = false;
@@ -41,9 +42,22 @@ export class PalpiteBonusComponent implements OnInit {
     const id = this.route.snapshot.params.id;
     this.palpiteService.isPalpiteBonusDisponivel(id).subscribe(r => {
       this.disponivel = r;
+      this.getPalpitesParticipantes();
     }, err => {
       this.disponivel = false;
     })
+  }
+
+  getPalpitesParticipantes() {
+    if (!this.disponivel) {
+      const id = this.route.snapshot.params.id;
+      this.palpiteService.getPalpitesParticipantes(id).subscribe(r => {
+        this.palpites = r;
+        console.log(this.palpites)
+      }, err => {
+        throw err;
+      })
+    }
   }
 
   getAllTimes() {

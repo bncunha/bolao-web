@@ -47,3 +47,30 @@
     </div>
   </div>
 </form>
+
+<div *ngIf="palpites?.length" class="mt-6">
+  <table class="table is-fullwidth" aria-describedby="Ranking de usuários do bolão">
+    <thead>
+      <tr>
+        <th scope="col"> Nome </th>
+        <th scope="col"> Campeão </th>
+        <th scope="col"> Vice-campeão </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let palpite of palpites; let i = index" [ngClass]="{'ouro': i == 0, 'prata': i == 1, 'bronze': i == 2}">
+        <td> {{ palpite?.usuario?.nome}} </td>
+        <td>
+          <figure class="image is-32x32">
+            <img [src]="'/assets/brasao/' + palpite?.palpiteCampeao?.logomarca" [title]="palpite?.palpiteCampeao?.nome"/>
+          </figure>
+        </td>
+        <td>
+          <figure class="image is-32x32">
+            <img [src]="'/assets/brasao/' + palpite?.palpiteViceCampeao?.logomarca" [title]="palpite?.palpiteViceCampeao?.nome"/>
+          </figure>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
