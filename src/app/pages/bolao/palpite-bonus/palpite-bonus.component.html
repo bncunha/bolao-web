@@ -61,14 +61,16 @@
       <tr *ngFor="let palpite of palpites; let i = index" [ngClass]="{'ouro': i == 0, 'prata': i == 1, 'bronze': i == 2}">
         <td> {{ palpite?.usuario?.nome}} </td>
         <td>
-          <figure class="image is-32x32">
-            <img [src]="'/assets/brasao/' + palpite?.palpiteCampeao?.logomarca" [title]="palpite?.palpiteCampeao?.nome"/>
+          <figure class="image is-32x32" *ngIf="palpite?.palpiteCampeao?.logomarca">
+            <img [src]="'/assets/brasao/' + palpite?.palpiteCampeao?.logomarca" [title]="palpite?.palpiteCampeao?.nome" [alt]="palpite?.palpiteCampeao?.nome"/>
           </figure>
+          <span *ngIf="!palpite?.palpiteCampeao?.logomarca"> - </span>
         </td>
         <td>
-          <figure class="image is-32x32">
-            <img [src]="'/assets/brasao/' + palpite?.palpiteViceCampeao?.logomarca" [title]="palpite?.palpiteViceCampeao?.nome"/>
+          <figure class="image is-32x32" *ngIf="palpite?.palpiteViceCampeao?.logomarca">
+            <img [src]="'/assets/brasao/' + palpite?.palpiteViceCampeao?.logomarca" [title]="palpite?.palpiteViceCampeao?.nome" [alt]="palpite?.palpiteViceCampeao?.nome"/>
           </figure>
+          <span *ngIf="!palpite?.palpiteViceCampeao?.logomarca"> - </span>
         </td>
       </tr>
     </tbody>
