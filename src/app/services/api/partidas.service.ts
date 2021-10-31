@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DateUtils } from 'src/app/utils/date.util';
 import { EnviarResultadoDto } from '../requests/EnviarResultadoDto';
 import { PartidaResponse } from '../responses/Partida.response';
+import { PartidaAoVivoResponse } from '../responses/PartidaAoVivo.response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class PartidasService {
 
   atualizarResultadoPartidas(resultadoDto: EnviarResultadoDto[]) {
     return this.http.patch<PartidaResponse[]>('partidas/salvar-resultado', resultadoDto);
+  }
+
+  getPartidasAoVivo() {
+    return this.http.get<PartidaAoVivoResponse[]>('partidas/lives');
   }
 }

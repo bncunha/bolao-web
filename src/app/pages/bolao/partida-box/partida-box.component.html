@@ -1,50 +1,55 @@
-<div class="box partida-wrapper">
-  <div class="columns is-mobile is-multiline">
+<div class="partida-wrapper skeleton" *ngIf="loading; else content"></div>
 
-    <div class="column mb-2">
-      <small> {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
-    </div>
+<ng-template #content>
+  <div class="box partida-wrapper">
+    <div class="columns is-mobile is-multiline">
 
-    <div class="column is-one-fifth has-text-centered" *ngIf="partida.isFinalizado && !showResultado">
-      <small class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
-        {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
-      </small>
-    </div>
+      <div class="column mb-2">
+        <small> {{ partida.data | date : 'dd/MM/yyyy HH:mm' }}</small>
+      </div>
 
-    <div class="column mb-2 has-text-right">
-      <a class="ver-mais-link is-ghost" [routerLink]="['../partida', partida.id]">
-        <div class="icon-text is-justify-content-flex-end">
-          <span class="icon has-text-info">
-            <em class="fas fa-info-circle"></em>
-          </span>
-          <span> Ver mais </span>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="columns is-mobile is-multiline mb-0">
-    <div class="column is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-center">
-      <figure class="image is-32x32">
-        <img [src]="'/assets/brasao/' + partida?.mandante?.logomarca" [alt]="partida?.mandante?.nome"/>
-      </figure>
-      <span class="nome-time"> {{ partida?.mandante?.nome }} </span>
-    </div>
-    <div class="column is-6 has-text-centered">
-      <div class="field is-grouped is-horizontal">
-        <input *ngIf="!showResultado" [disabled]="disabled"  [(ngModel)]="partida.palpites[0].resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        <div class="mx-2 is-expanded">
-          <div class="versus has-text-weight-bold"> X </div>
-        </div>
-        <input *ngIf="!showResultado"  [disabled]="disabled" [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
-        <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+      <div class="column is-one-fifth has-text-centered" *ngIf="partida.isFinalizado && !showResultado">
+        <small class="has-text-weight-bold" [class.is-success]="partida.palpites && partida.palpites[0].pontuacao > 0" [class.is-warning]="!(partida.palpites ? partida.palpites[0].pontuacao : 0)">
+          {{ partida.palpites?.length && partida.palpites[0].pontuacao ? partida.palpites[0].pontuacao : 0 }} pts
+        </small>
+      </div>
+
+      <div class="column mb-2 has-text-right">
+        <a class="ver-mais-link is-ghost" [routerLink]="['../partida', partida.id]">
+          <div class="icon-text is-justify-content-flex-end">
+            <span class="icon has-text-info">
+              <em class="fas fa-info-circle"></em>
+            </span>
+            <span> Ver mais </span>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="column is-flex is-align-items-center is-justify-content-center is-flex-wrap-wrap">
-      <figure class="image is-32x32">
-        <img [src]="'/assets/brasao/' + partida?.visitante?.logomarca" [alt]="partida?.visitante?.nome"/>
-      </figure>
-      <span class="nome-time"> {{ partida?.visitante?.nome }} </span>
+    <div class="columns is-mobile is-multiline mb-0">
+      <div class="column is-flex is-align-items-center is-flex-wrap-wrap is-justify-content-center">
+        <figure class="image is-32x32">
+          <img [src]="partida?.mandante?.logomarca" [alt]="partida?.mandante?.nome"/>
+        </figure>
+        <span class="nome-time"> {{ partida?.mandante?.nome }} </span>
+      </div>
+      <div class="column is-6 has-text-centered">
+        <div class="field is-grouped is-horizontal">
+          <input *ngIf="!showResultado" [disabled]="disabled"  [(ngModel)]="partida.palpites[0].resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+          <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoMandante" name="resultadoMandante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+          <div class="mx-2 is-expanded">
+            <div class="versus has-text-weight-bold"> X </div>
+          </div>
+          <input *ngIf="!showResultado"  [disabled]="disabled" [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+          <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        </div>
+      </div>
+      <div class="column is-flex is-align-items-center is-justify-content-center is-flex-wrap-wrap">
+        <figure class="image is-32x32">
+          <img [src]="partida?.visitante?.logomarca" [alt]="partida?.visitante?.nome"/>
+        </figure>
+        <span class="nome-time"> {{ partida?.visitante?.nome }} </span>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
+

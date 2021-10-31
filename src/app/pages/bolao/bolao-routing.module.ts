@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BoloesParticipandoComponent } from './boloes-participando/boloes-participando.component';
 import { CriarBolaoComponent } from './criar-bolao/criar-bolao.component';
 import { DetalhesPartidaComponent } from './detalhes-partida/detalhes-partida.component';
 import { InformarResultadosComponent } from './informar-resultados/informar-resultados.component';
+import { ListaPartidasComponent } from './lista-partidas/lista-partidas.component';
 import { MenuBolaoComponent } from './menu-bolao/menu-bolao.component';
 import { PalpiteBonusComponent } from './palpite-bonus/palpite-bonus.component';
 import { ParticiparBolaoComponent } from './participar-bolao/participar-bolao.component';
@@ -15,6 +17,7 @@ export interface BolaoData {
 }
 
 const rotes: Routes = [
+  {path: '', component: BoloesParticipandoComponent, data: {titulo: 'Meus bolões'} as BolaoData },
   {path: 'novo', component: CriarBolaoComponent, data: {titulo: 'Criar bolão'} as BolaoData },
   {path: 'participar/:id', component: ParticiparBolaoComponent, data: {backUrl: '/inicio'} as BolaoData},
   {path: ':id', component: MenuBolaoComponent, data: {backUrl: '/inicio'} as BolaoData},

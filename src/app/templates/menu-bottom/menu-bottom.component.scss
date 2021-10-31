@@ -1,0 +1,26 @@
+.menu {
+  background: #fff;
+  height: 70 px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+}
+
+.menu-item {
+  color: #334233;
+  width: 100px;
+  position: relative;
+}
+
+a.--active .menu-item {
+  font-weight: 600;
+}
+
+a.--active .menu-item::after {
+  content: "";
+  height: 2px;
+  width: 50px;
+  position: absolute;
+  background: #329f58;
+  left: calc(50% - 25px);
+}

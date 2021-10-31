@@ -1,0 +1,13 @@
+<div class="menu box">
+  <ng-container *ngFor="let menu of menus">
+    <a [routerLink]="menu.url" routerLinkActive="--active">
+      <div class="menu-item has-text-centered">
+        <span class="icon is-medium">
+          <i class="fas fa-lg {{ menu.icon }}"></i>
+        </span>
+        <div> {{ menu.label }} </div>
+      </div>
+    </a>
+  </ng-container>
+
+</div>

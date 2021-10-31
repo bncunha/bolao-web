@@ -12,7 +12,7 @@
     <div class="column has-text-centered">
       <span class="resultado"> {{ detalhes?.partida?.resultadoMandante }} </span>
       <figure class="image is-inline-block is-96x96">
-        <img [alt]="detalhes?.partida?.mandante?.nome" [src]="'/assets/brasao/' + detalhes?.partida?.mandante?.logomarca">
+        <img [alt]="detalhes?.partida?.mandante?.nome" [src]="detalhes?.partida?.mandante?.logomarca">
       </figure>
       <span class="nome-time"> {{ detalhes?.partida?.mandante?.nome }} </span>
     </div>
@@ -22,7 +22,7 @@
     <div class="column has-text-centered">
       <span class="resultado"> {{ detalhes?.partida?.resultadoVisitante }} </span>
       <figure class="image is-96x96">
-        <img [alt]="detalhes?.partida?.visitante?.nome" [src]="'/assets/brasao/' + detalhes?.partida?.visitante?.logomarca">
+        <img [alt]="detalhes?.partida?.visitante?.nome" [src]="detalhes?.partida?.visitante?.logomarca">
       </figure>
       <span class="nome-time"> {{ detalhes?.partida?.visitante?.nome }} </span>
     </div>

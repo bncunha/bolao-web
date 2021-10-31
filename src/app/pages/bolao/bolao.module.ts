@@ -38,7 +38,8 @@ import { DetalhesPartidaComponent } from './detalhes-partida/detalhes-partida.co
     SharedModule,
   ],
   exports: [
-    BoloesParticipandoComponent
+    BoloesParticipandoComponent,
+    PartidaBoxComponent
   ]
 })
 export class BolaoModule { }

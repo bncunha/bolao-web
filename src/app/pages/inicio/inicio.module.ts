@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio.component';
 import { InicioRoutingModule } from './inicio-routing.module';
-import { BolaoModule } from '../bolao/bolao.module';
+import { PartidasModule } from '../partidas/partidas.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { BolaoModule } from '../bolao/bolao.module';
   imports: [
     CommonModule,
     InicioRoutingModule,
-    BolaoModule
+    PartidasModule
   ]
 })
 export class InicioModule { }
