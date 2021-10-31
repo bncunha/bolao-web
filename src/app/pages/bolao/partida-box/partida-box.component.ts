@@ -10,6 +10,7 @@ export class PartidaBoxComponent implements OnInit {
   @Input() showResultado: boolean = false;
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
+  @Input() isAovivo: boolean = false;
 
   constructor() { }
 

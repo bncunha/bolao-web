@@ -15,7 +15,7 @@
       </div>
 
       <div class="column mb-2 has-text-right">
-        <a class="ver-mais-link is-ghost" [routerLink]="['../partida', partida.id]">
+        <a class="ver-mais-link is-ghost" [routerLink]="['../partida', partida.id]" *ngIf="!isAovivo">
           <div class="icon-text is-justify-content-flex-end">
             <span class="icon has-text-info">
               <em class="fas fa-info-circle"></em>
@@ -41,6 +41,14 @@
           </div>
           <input *ngIf="!showResultado"  [disabled]="disabled" [(ngModel)]="partida.palpites[0].resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
           <input *ngIf="showResultado"  [disabled]="disabled" [(ngModel)]="partida.resultadoVisitante" name="resultadoVisitante{{ partida.id }}" type="number" min="0" maxlength="3" max="100" step="1" class="input is-small">
+        </div>
+
+        <div *ngIf="isAovivo" class="partida-status">
+          <div> {{ partida?.status }} </div>
+          <div> {{ partida?.tempoDecorrido }}' </div>
+          <div class="loading-content">
+            <div class="loading-bar"></div>
+          </div>
         </div>
       </div>
       <div class="column is-flex is-align-items-center is-justify-content-center is-flex-wrap-wrap">

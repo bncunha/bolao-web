@@ -1,5 +1,5 @@
 <div class="block is-flex is-justify-content-space-between is-align-items-center">
-  <h1> Partidas ao vivo </h1>
+  <h1> Partidas ao vivo! </h1>
   <button type="button" class="button is-ghost" title="Recarregar" (click)="getAovivo()">
     <span class="icon">
       <i class="fas fa-lg fa-sync-alt"></i>
@@ -10,10 +10,10 @@
 <ng-container *ngIf="(aoVivo$ | async) as aoVivo; else loading">
   <div *ngFor="let item of aoVivo">
     <div class="item-nome-campeonato"> {{ item.campeonato.nome }} - {{ item.campeonato.ano }}</div>
-    <app-partida-box *ngFor="let partida of item.partidas" [partida]="partida" [disabled]="true" [showResultado]="true"></app-partida-box>
-  </div>
-  <div *ngIf="!aoVivo?.length" class="box has-text-centered">
-    No momento, há partidas ativas dos campeonatos que você participa! 😉
+    <app-partida-box *ngFor="let partida of item.partidas" [isAovivo]="true" [partida]="partida" [disabled]="true" [showResultado]="true"></app-partida-box>
+    <div *ngIf="!item.partidas?.length" class="box has-text-centered">
+      No momento, não há partidas ativas para este campeoanto! 😉
+    </div>
   </div>
 </ng-container>
 
