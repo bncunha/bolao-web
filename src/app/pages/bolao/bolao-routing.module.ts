@@ -20,7 +20,7 @@ const rotes: Routes = [
   {path: '', component: BoloesParticipandoComponent, data: {titulo: 'Meus bolões'} as BolaoData },
   {path: 'novo', component: CriarBolaoComponent, data: {titulo: 'Criar bolão'} as BolaoData },
   {path: 'participar/:id', component: ParticiparBolaoComponent, data: {backUrl: '/inicio'} as BolaoData},
-  {path: ':id', component: MenuBolaoComponent, data: {backUrl: '/inicio'} as BolaoData},
+  {path: ':id', component: MenuBolaoComponent, data: {backUrl: '/boloes'} as BolaoData},
   {path: ':id/proximas', component: ProximasPartidasComponent, data: {backUrl: '{menuBolao}', titulo: 'Apostas'} as BolaoData},
   {path: ':id/informar-resultados', component: InformarResultadosComponent, data: {backUrl: '{menuBolao}', titulo: 'Informar Resultados'} as BolaoData},
   {path: ':id/ranking', component: RankingComponent, data: {backUrl: '{menuBolao}', titulo: 'Ranking'} as BolaoData},
