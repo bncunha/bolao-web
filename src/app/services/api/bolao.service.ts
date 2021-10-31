@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CriarBolaoDto } from '../requests/CriarBolaoDto';
 import { SalvarPalpiteBonusDto } from '../requests/SalvarPalpiteBonusDto';
@@ -18,7 +18,7 @@ export class BolaoService {
   constructor(private http: HttpClient) { }
 
   getParticipando(): Observable<BolaoResponse[]> {
-    if (this.cache['PARTICIPANDO']) return this.cache['PARTICIPANDO'];
+    if (this.cache['PARTICIPANDO']) return of(this.cache['PARTICIPANDO']);
     return this.http.get<BolaoResponse[]>('boloes/participando').pipe(
       tap(r => this.cache['PARTICIPANDO'] = r)
     );
