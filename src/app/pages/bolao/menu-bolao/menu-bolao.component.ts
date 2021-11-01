@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { DataTransferService } from 'src/app/services/core/data-transfer.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 import { BolaoResponse } from 'src/app/services/responses/Bolao.response';
 
@@ -44,8 +45,12 @@ export class MenuBolaoComponent implements OnInit {
     private dataTransfer: DataTransferService,
     private bolaoService: BolaoService,
     private routerService: RouterService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    seoService: SeoService
+  ) {
+    const id = this.route.snapshot.params.id;
+    seoService.changeTitle('Bolão ' + id);
+  }
 
   ngOnInit(): void {
     this.verificarParticipacaoBolao();

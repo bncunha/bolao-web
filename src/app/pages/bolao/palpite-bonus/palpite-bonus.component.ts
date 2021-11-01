@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { PalpiteService } from 'src/app/services/api/palpite.service';
 import { TimeService } from 'src/app/services/api/time.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 import { SalvarPalpiteBonusDto } from 'src/app/services/requests/SalvarPalpiteBonusDto';
 import { TimeResponse } from 'src/app/services/responses/TimeResponse';
@@ -29,8 +30,11 @@ export class PalpiteBonusComponent implements OnInit {
     private palpiteService: PalpiteService,
     private route: ActivatedRoute,
     private toastService: ToastService,
-    private bolaoService: BolaoService
-  ) { }
+    private bolaoService: BolaoService,
+    seoService: SeoService
+    ) {
+    seoService.changeTitle('Palpite bônus')
+  }
 
   ngOnInit(): void {
     this.verificarDisponibilidade();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PartidasService } from 'src/app/services/api/partidas.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { PartidaResponse } from 'src/app/services/responses/Partida.response';
 import { PartidaAoVivoResponse } from 'src/app/services/responses/PartidaAoVivo.response';
 
@@ -13,8 +14,11 @@ export class PartidasAovivoComponent implements OnInit {
   aoVivo$!: Observable<PartidaAoVivoResponse[]>;
 
   constructor(
-    private partidaService: PartidasService
-  ) { }
+    private partidaService: PartidasService,
+    seoService: SeoService
+  ) {
+    seoService.changeTitle('Ao vivo')
+  }
 
   ngOnInit(): void {
     this.getAovivo();

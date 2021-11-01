@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { RankingResponse } from 'src/app/services/responses/Ranking.response';
 
 @Component({
@@ -14,8 +15,11 @@ export class RankingComponent implements OnInit {
 
   constructor(
     private bolaoService: BolaoService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    seoService: SeoService
+  ) {
+    seoService.changeTitle('Ranking 🏆')
+  }
 
   ngOnInit(): void {
     this.getRanking();

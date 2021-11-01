@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/api/usuario.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 
 @Component({
@@ -16,8 +17,11 @@ export class CadastroComponent {
   constructor(
     private usuarioService: UsuarioService,
     private toastService: ToastService,
-    private router: RouterService
-  ) {}
+    private router: RouterService,
+    seoService: SeoService,
+  ) {
+    seoService.changeTitle('Cadastro')
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {

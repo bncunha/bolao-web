@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 import { BolaoResponse } from 'src/app/services/responses/Bolao.response';
 
@@ -20,8 +21,11 @@ export class ParticiparBolaoComponent implements OnInit {
     private bolaoService: BolaoService,
     private route: ActivatedRoute,
     private toastService: ToastService,
-    private routerService: RouterService
-  ) { }
+    private routerService: RouterService,
+    seoService: SeoService
+    ) {
+    seoService.changeTitle('Criar bolão')
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;

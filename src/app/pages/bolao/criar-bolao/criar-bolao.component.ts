@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 
 @Component({
@@ -15,8 +16,11 @@ export class CriarBolaoComponent {
   constructor(
     private routerService: RouterService,
     private bolaoService: BolaoService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    seoService: SeoService
+  ) {
+    seoService.changeTitle('Criar bolão')
+  }
 
   voltar() {
     this.routerService.toInicio();

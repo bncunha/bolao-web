@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { PartidasService } from 'src/app/services/api/partidas.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 
 @Component({
   selector: 'app-detalhes-partida',
@@ -16,8 +17,11 @@ export class DetalhesPartidaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private bolaoService: BolaoService,
-    private partidaService: PartidasService
-  ) { }
+    private partidaService: PartidasService,
+    seoService: SeoService
+    ) {
+      seoService.changeTitle('Detalhes partida')
+  }
 
   ngOnInit(): void {
     const idBolao = this.route.snapshot.params.id;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from 'src/app/services/core/seo.service';
 
 @Component({
   selector: 'app-inicio',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    seoService: SeoService
+  ) {
+    seoService.changeTitle('Início')
+  }
 
   ngOnInit(): void {
   }

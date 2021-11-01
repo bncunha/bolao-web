@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { DataTransferService } from 'src/app/services/core/data-transfer.service';
 import { RouterService } from 'src/app/services/core/router.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { BolaoResponse } from 'src/app/services/responses/Bolao.response';
 
 @Component({
@@ -16,8 +17,11 @@ export class BoloesParticipandoComponent implements OnInit {
   constructor(
     private bolaoService: BolaoService,
     private dataTransfer: DataTransferService,
-    private routerService: RouterService
-  ) { }
+    private routerService: RouterService,
+    seoService: SeoService
+  ) {
+    seoService.changeTitle('Meus bolões')
+  }
 
   ngOnInit(): void {
     this.getParticipando();

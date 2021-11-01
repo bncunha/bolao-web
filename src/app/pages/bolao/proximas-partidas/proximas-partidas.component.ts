@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { PalpiteService } from 'src/app/services/api/palpite.service';
+import { SeoService } from 'src/app/services/core/seo.service';
 import { ToastService } from 'src/app/services/core/toast.service';
 import { CriarPalpiteDto } from 'src/app/services/requests/CriarPalpiteDto';
 
@@ -19,8 +20,11 @@ export class ProximasPartidasComponent implements OnInit {
     private bolaoService: BolaoService,
     private route: ActivatedRoute,
     private palpitesService: PalpiteService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    seoService: SeoService
+    ) {
+    seoService.changeTitle('Próximas partidas')
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
