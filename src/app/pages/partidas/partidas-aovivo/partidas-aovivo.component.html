@@ -12,8 +12,11 @@
     <div class="item-nome-campeonato"> {{ item.campeonato.nome }} - {{ item.campeonato.ano }}</div>
     <app-partida-box *ngFor="let partida of item.partidas" [isAovivo]="true" [partida]="partida" [disabled]="true" [showResultado]="true"></app-partida-box>
     <div *ngIf="!item.partidas?.length" class="box has-text-centered">
-      No momento, não há partidas ativas para este campeoanto! 😉
+      No momento, não há partidas ativas para este campeonato! 😉
     </div>
+  </div>
+  <div *ngIf="!aoVivo?.length" class="box has-text-centered">
+    No momento, não está acontecendo nenhuma partida! 😉
   </div>
 </ng-container>
 
