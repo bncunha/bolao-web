@@ -16,9 +16,10 @@ export class CustomErrorHandler implements ErrorHandler {
 
   handleError(error: any): void {
     this.ngZone.run(() => {
-      if (!window.navigator.onLine) {
-        this.toast.warning('Verifique sua conexão.', 'Sem internet!');
-      } else if (error instanceof HttpErrorResponse) {
+      // if (!navigator.onLine) {
+      //   this.toast.warning('Verifique sua conexão.', 'Sem internet!');
+      // }
+      if (error instanceof HttpErrorResponse) {
         this.handleBackendError(error);
       } else if(error.message) {
         this.handleClientError(error.message);

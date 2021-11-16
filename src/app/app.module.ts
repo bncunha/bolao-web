@@ -17,7 +17,7 @@ import { TokenInterceptor } from './services/interceptors/token.interceptor';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
