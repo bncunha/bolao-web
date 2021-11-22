@@ -1,0 +1,24 @@
+<div class="block is-flex is-justify-content-space-between is-align-items-center">
+  <h1> Partidas esta semana! </h1>
+</div>
+
+<ng-container *ngIf="(partidas$ | async) as aoVivo; else loading">
+  <div *ngFor="let item of aoVivo">
+    <!-- <div class="item-nome-campeonato"> {{ item.campeonato.nome }} - {{ item.campeonato.ano }}</div> -->
+    <app-partida-box *ngFor="let partida of item.partidas" [isAovivo]="true" [partida]="partida" [disabled]="true" [showResultado]="true"></app-partida-box>
+    <div *ngIf="!item.partidas?.length" class="box has-text-centered">
+      No momento, não há partidas ativas para este campeonato! 😉
+    </div>
+  </div>
+  <div *ngIf="!aoVivo?.length" class="box has-text-centered">
+    No momento, não está acontecendo nenhuma partida! 😉
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <div class="mb-3" *ngFor="let i of [1,2,3]">
+    <app-partida-box [loading]="true"></app-partida-box>
+  </div>
+</ng-template>
+
+

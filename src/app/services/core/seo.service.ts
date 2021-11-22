@@ -11,6 +11,6 @@ export class SeoService {
   ) { }
 
   changeTitle(title: string) {
-    this.title.setTitle(title + ' | Bolão Mania')
+    this.title.setTitle(title + ' | Palpite Certo')
   }
 }
