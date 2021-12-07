@@ -4,4 +4,5 @@ export interface RankingResponse {
   isVencedor: boolean;
   pontuacao: number;
   usuario: any;
+  pontosBonus: number;
 }

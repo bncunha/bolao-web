@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { CriarBolaoDto } from '../requests/CriarBolaoDto';
 import { SalvarPalpiteBonusDto } from '../requests/SalvarPalpiteBonusDto';
 import { BolaoResponse } from '../responses/Bolao.response';
@@ -20,7 +20,11 @@ export class BolaoService {
   getParticipando(): Observable<BolaoResponse[]> {
     if (this.cache['PARTICIPANDO']) return of(this.cache['PARTICIPANDO']);
     return this.http.get<BolaoResponse[]>('boloes/participando').pipe(
-      tap(r => this.cache['PARTICIPANDO'] = r)
+      tap(r => this.cache['PARTICIPANDO'] = r),
+      map(r => r.map(b => {
+        b.participantes.forEach(participante => participante.pontosBonus = participante.pontosBonus ? Number(participante.pontosBonus) : 0)
+        return b;
+      }))
     );
   }
 
@@ -41,7 +45,12 @@ export class BolaoService {
   }
 
   getRanking(idBolao: number): Observable<RankingResponse[]> {
-    return this.http.get<RankingResponse[]>('boloes/' + idBolao + '/ranking');
+    return this.http.get<RankingResponse[]>('boloes/' + idBolao + '/ranking').pipe(
+      map(r => r.map(ranking => {
+        ranking.pontosBonus = Number(ranking.pontosBonus);
+        return ranking;
+      }))
+    );
   }
 
   criarBolao(criarBolaoDto: CriarBolaoDto) {
