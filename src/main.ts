@@ -9,10 +9,8 @@ if (environment.production) {
   addGTM();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-     platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-   });
 
 function addGTM() {
   const script = document.createElement('script');
