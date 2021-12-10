@@ -10,9 +10,11 @@
     <small> Você possui: </small>
     <p class="total-pontos">
       {{ (bolao ? bolao.participantes[0].totalPontos : 0) | number }}
-      <span *ngIf="bolao ? bolao.participantes[0]?.pontosBonus : false" class="bonus"> (+{{(bolao ? bolao.participantes[0]?.pontosBonus : 0) | number}})</span>
       pontos
     </p>
+    <span *ngIf="bolao ? bolao.participantes[0]?.pontosBonus : false" class="bonus">
+      ({{  ((bolao ? bolao.participantes[0]?.totalPontos : 0) - (bolao ? bolao.participantes[0]?.pontosBonus : 0) | number )}} + {{ bolao ? bolao.participantes[0]?.pontosBonus : 0 }}) pts
+    </span>
   </div>
 
   <div class="columns is-mobile is-flex-wrap-wrap" *ngIf="!loding">
