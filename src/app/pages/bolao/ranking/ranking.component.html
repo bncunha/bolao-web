@@ -19,9 +19,8 @@
         </td>
         <td> {{ rank.usuario.nome }} </td>
         <td>
-          {{ rank.pontuacao | number}} pts
           <span *ngIf="rank.pontosBonus" class="bonus amarelo"> ({{(rank.pontuacao - rank.pontosBonus) | number}} + {{ rank.pontosBonus | number }})</span>
-
+          {{ rank.pontuacao | number}} pts
         </td>
       </tr>
     </tbody>
