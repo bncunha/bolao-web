@@ -54,11 +54,11 @@
   </div>
   <div class="field">
     <label class="checkbox">
-      <input type="checkbox" ngModel name="privado">
+      <input type="checkbox" ngModel name="isPrivado">
       Bolão privado
     </label>
   </div>
-  <div *ngIf="f.form.value.privado" class="field">
+  <div *ngIf="f.form.value.isPrivado" class="field">
     <label class="label" for="senha"> Senha </label>
     <input type="password"
       ngModel
@@ -69,7 +69,7 @@
       required>
       <app-error-display name="senha"></app-error-display>
   </div>
-  <div *ngIf="f.form.value.privado" class="field">
+  <div *ngIf="f.form.value.isPrivado" class="field">
     <label class="label" for="senha"> Confirmar Senha </label>
     <input type="password"
       ngModel
