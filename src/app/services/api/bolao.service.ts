@@ -32,8 +32,8 @@ export class BolaoService {
     return this.http.get<BolaoResponse>('boloes/' + idBolao);
   }
 
-  participarBolao(idBolao: number) {
-    return this.http.post('boloes/' + idBolao + '/participar', {});
+  participarBolao(idBolao: number, senha: string) {
+    return this.http.post('boloes/' + idBolao + '/participar', {senha});
   }
 
   getPartidasAtivas(idBolao: number) {
