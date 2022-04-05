@@ -18,7 +18,6 @@ export class BolaoService {
   constructor(private http: HttpClient) { }
 
   getParticipando(): Observable<BolaoResponse[]> {
-    if (this.cache['PARTICIPANDO']) return of(this.cache['PARTICIPANDO']);
     return this.http.get<BolaoResponse[]>('boloes/participando').pipe(
       tap(r => this.cache['PARTICIPANDO'] = r),
       map(r => r.map(b => {
