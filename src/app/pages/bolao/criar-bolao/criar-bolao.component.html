@@ -2,7 +2,7 @@
   <h1> Novo bolão </h1>
 </div>
 
-<form #f="ngForm" (submit)="onSubmit(f)">
+<form #f="ngForm" (submit)="onSubmit(f)" [mustMatch]="['senha', 'confirmaSenha']">
   <div class="field">
     <label class="label"> Nome do bolão </label>
     <input type="text"
@@ -13,21 +13,75 @@
     <app-error-display name="nome"></app-error-display>
   </div>
   <div class="field">
+    <label class="label"> Campeonato </label>
+    <div class="is-fullwidth">
+      <ng-select [items]="campeonatos"
+        bindValue="idApiFootball"
+        bindLabel="nome"
+        ngModel
+        name="campeonatoId"
+        required>
+        <ng-template ng-option-tmp let-item="item" let-index="index">
+          <div class="campeonato">
+            <div class="campeonato__img">
+              <img class="image is-rounded" [src]="item.imagem" [alt]="item.nome"/>
+            </div>
+            <div class="campeonato__info">
+              {{ item.nome }}
+              <small class="campeonato__iniciado" *ngIf="isCampeonatoIniciado(item.dataInicio)"> Já Iniciado: {{ item.dataInicio | date: 'dd/MM/yyyy'}}</small>
+              <small class="campeonato__nao-iniciado" *ngIf="!isCampeonatoIniciado(item.dataInicio)">
+                Início: {{ item.dataInicio | date: 'dd/MM/yyyy'}}
+                ({{ getDiasParaInicio(item.dataInicio) }} dias)
+              </small>
+            </div>
+          </div>
+        </ng-template>
+      </ng-select>
+    </div>
+    <app-error-display name="campeonatoId"></app-error-display>
+  </div>
+  <div class="field">
     <label class="label"> Nº. máximo de participantes </label>
     <input type="number"
-      ngModel
+      [(ngModel)]="maximoParticipantes"
       class="input"
       name="maximoParticipantes"
       required
-      min="5">
+      maxlength="4"
+      max="1000"
+      min="2">
     <app-error-display name="maximoParticipantes"></app-error-display>
   </div>
-  <div class="field is-grouped">
-    <div class="control">
-      <button type="submit" [isLoading]="loading" class="button is-primary"> Salvar </button>
-    </div>
-    <div class="control">
-      <button type="button" (click)="voltar()" class="button is-primary is-outlined"> Cancelar </button>
-    </div>
+  <div class="field">
+    <label class="checkbox">
+      <input type="checkbox" ngModel name="privado">
+      Bolão privado
+    </label>
+  </div>
+  <div *ngIf="f.form.value.privado" class="field">
+    <label class="label" for="senha"> Senha </label>
+    <input type="password"
+      ngModel
+      class="input"
+      name="senha"
+      minlength="3"
+      maxlength="25"
+      required>
+      <app-error-display name="senha"></app-error-display>
+  </div>
+  <div *ngIf="f.form.value.privado" class="field">
+    <label class="label" for="senha"> Confirmar Senha </label>
+    <input type="password"
+      ngModel
+      class="input"
+      name="confirmaSenha"
+      minlength="3"
+      maxlength="25"
+      required>
+      <app-error-display name="confirmaSenha"></app-error-display>
+  </div>
+  <div class="field mt-6">
+    <button type="submit" [isLoading]="loading" class="button is-primary is-fullwidth mb-3"> Salvar </button>
+    <button type="button" (click)="voltar()" class="button is-primary is-outlined is-fullwidth-mobile"> Cancelar </button>
   </div>
 </form>

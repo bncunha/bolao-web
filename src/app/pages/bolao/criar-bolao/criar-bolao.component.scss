@@ -1,0 +1,25 @@
+.campeonato {
+  border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.campeonato__img {
+  max-width: 35px;
+  margin-right: 10px;
+
+  > img {
+    border-radius: 50%;
+  }
+}
+
+.campeonato__iniciado {
+  display: block;
+  color: orange;
+}
+
+.campeonato__nao-iniciado {
+  @extend .campeonato__iniciado;
+  color: green;
+}
