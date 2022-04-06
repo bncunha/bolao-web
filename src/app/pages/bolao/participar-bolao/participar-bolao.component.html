@@ -4,12 +4,21 @@
 
 <div class="element is-loading" *ngIf="loading"></div>
 
-<div class="content">
+<form #f="ngForm" class="content" (submit)="participar(f)">
   <h4> {{ bolao?.nome }} </h4>
   <p>
     <strong> Id: </strong> {{ bolao?.id }} <br/>
     <strong> Início: </strong> {{ bolao?.dataInicio | date: 'dd/MM/yyyy '}} <br/>
     <strong> Máximo participantes: </strong> {{ bolao?.maximoParticipantes }} <br/>
   </p>
-  <button type="button" [isLoading]="loadingParticipar" class="button is-primary" (click)="participar()"> Participar </button>
-</div>
+  <div class="field" *ngIf="!bolao?.isPublico">
+    <label class="label" for="senha"> Informe a senha para participar: </label>
+    <input type="password"
+      ngModel
+      class="input"
+      name="senha"
+      required>
+      <app-error-display name="senha"></app-error-display>
+  </div>
+  <button type="submit" [isLoading]="loadingParticipar" class="button is-primary"> Participar </button>
+</form>

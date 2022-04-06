@@ -14,6 +14,7 @@ import { ListaPartidasComponent } from './lista-partidas/lista-partidas.componen
 import { RankingComponent } from './ranking/ranking.component';
 import { PalpiteBonusComponent } from './palpite-bonus/palpite-bonus.component';
 import { DetalhesPartidaComponent } from './detalhes-partida/detalhes-partida.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -36,6 +37,7 @@ import { DetalhesPartidaComponent } from './detalhes-partida/detalhes-partida.co
     CommonModule,
     BolaoRoutingModule,
     SharedModule,
+    NgSelectModule
   ],
   exports: [
     BoloesParticipandoComponent,

@@ -29,12 +29,14 @@ export class MenuBolaoComponent implements OnInit {
     icone: 'fa-star',
     link: 'palpite-bonus',
     texto: 'Palpite Bônus',
-  }, {
-    icone: 'fa-trophy',
-    link: 'informar-resultados',
-    texto: 'Informar resultados',
-    onlyAdm: true
-  }, {
+  }, 
+  // {
+  //   icone: 'fa-trophy',
+  //   link: 'informar-resultados',
+  //   texto: 'Informar resultados',
+  //   onlyAdm: true
+  // },
+   {
     icone: 'fa-sign-out-alt',
     texto: 'Sair',
     logout: true

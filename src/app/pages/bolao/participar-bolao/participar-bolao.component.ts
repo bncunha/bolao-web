@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BolaoService } from 'src/app/services/api/bolao.service';
 import { RouterService } from 'src/app/services/core/router.service';
@@ -44,16 +45,18 @@ export class ParticiparBolaoComponent implements OnInit {
     })
   }
 
-  participar() {
-    this.loadingParticipar = true;
-    this.bolaoService.participarBolao(this.id).subscribe(r => {
-      this.loadingParticipar = false;
-      this.toastService.sucesso('Você agora está participando desde leilão!');
-      this.routerService.voltar();
-    }, err => {
-      this.loadingParticipar = false;
-      throw err;
-    })
+  participar(form: NgForm) {
+    if (form.valid) {
+      this.loadingParticipar = true;
+      this.bolaoService.participarBolao(this.id, form.value.senha).subscribe(r => {
+        this.loadingParticipar = false;
+        this.toastService.sucesso('Você agora está participando desde leilão!');
+        this.routerService.voltar();
+      }, err => {
+        this.loadingParticipar = false;
+        throw err;
+      })
+    }
   }
 
 }
